@@ -1,0 +1,54 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+class A {
+	int money;
+	int number;
+public:
+	A(int money, int number) {
+		this->money = money;
+		this->number = number;
+	}
+	int getm() {
+		int s = 0;
+		s = this->money * this->number;
+		return s;
+	}
+
+};
+
+
+int main()
+{
+	int n, n1;
+	int sum = 0;
+	vector <A*> a(5);
+	a[0] = new A(10, 5);
+	a[1] = new A(20, 6);
+	a[2] = new A(50, 3);
+	a[3] = new A(100, 4);
+	a[4] = new A(200, 5);
+
+	for (int i = 0; i < a.size(); ++i) {
+		sum += a[i]->getm();
+	}
+	cin >> n >> n1;
+	if (n % 10 != 0)
+		cout << "Incorrect amount of money.";
+	else if (sum < n)
+		cout << "Not enough money.";
+	else cout << "Enough money.";
+	
+		if (n1 % 10 != 0)
+			cout << "Incorrect amount of money." << endl;
+		else if (sum < n1)
+			cout << "Not enough money." << endl;
+		else cout << "Enough money."<< endl;
+
+		system("pause");
+		return 0;
+}
