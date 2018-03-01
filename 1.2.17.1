@@ -1,0 +1,64 @@
+#include <iostream>
+#include <deque>
+#include <map>
+#include <string>
+
+using namespace std;
+
+enum CommandType
+{
+	MoveLeft,
+	MoveRight,
+	MoveForward,
+	MoveBackward
+};
+
+class RoboCommander {
+	deque <CommandType> cm;
+	map <CommandType, string> mp = { {MoveLeft, "Move left"},
+									{MoveRight, "Move right"},
+									{MoveForward, "Move forward"},
+									{MoveBackward, "Move backward"} };
+	public: 
+	RoboCommander(){}
+	void AddCommand(CommandType ct) {
+		this->cm.push_back(ct);
+	}
+	void UndoCommand() {
+		if (!this->cm.empty())
+		{
+			this->cm.pop_back();
+		}
+	}
+	void Execute() {
+		for (CommandType c : cm)
+			cout << mp.at(c) << endl;
+		cout << "Ready" << endl;
+	}
+};
+
+int main()
+{
+	RoboCommander commander;
+	commander.AddCommand(MoveLeft);
+	commander.AddCommand(MoveRight);
+	commander.UndoCommand();
+	commander.UndoCommand();
+	commander.UndoCommand();
+	commander.AddCommand(MoveLeft);
+	commander.AddCommand(MoveForward);
+	commander.AddCommand(MoveLeft);
+	commander.AddCommand(MoveForward);
+	commander.AddCommand(MoveRight);
+	commander.AddCommand(MoveBackward);
+	commander.Execute();
+	commander.UndoCommand();
+	commander.UndoCommand();
+	commander.UndoCommand();
+	commander.UndoCommand();
+	commander.AddCommand(MoveForward);
+	commander.Execute();
+	system("pause");
+
+	return 0;
+}
