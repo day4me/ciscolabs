@@ -1,0 +1,27 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    map<string, int> results = { {"Sarah", 15 }, {"John", 12 }, {"Bart", 17} };
+
+    for(auto r : results){
+        cout << r.first << " result is : " << r.second << endl;
+    }
+cout << endl;
+    results.erase("Bart");
+    for(auto r : results){
+        cout << r.first << " result is : " << r.second << endl;
+    }
+    cout << endl;
+
+    results.insert(std::pair<string,int>("Bob",16));
+    for(auto r : results){
+        cout << r.first << " result is : " << r.second << endl;
+    }
+
+    return 0;
+}
