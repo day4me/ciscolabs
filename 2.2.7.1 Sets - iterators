@@ -1,0 +1,41 @@
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main()
+{
+    set<int> s1;
+    set<int> s2;
+    unsigned start_value;
+    cin >> start_value;
+    unsigned stop_value;
+    cin >> stop_value;
+
+    for(int i =start_value; i <= stop_value; i++){
+        if(i%2==0) {
+            s1.insert(i);
+        }else {
+            s2.insert(i);
+        }
+    }
+    for(auto i = s1.begin();i!=s1.end();i++){
+        for(auto j = s2.begin(); j!=s2.end(); j++){
+            cout << *i + *j << " ";
+        }
+        cout << endl;
+    }
+    for(auto i = s1.rbegin();i!=s1.rend();i++){
+        for(auto j = s2.rbegin(); j!=s2.rend(); j++) {
+            cout << *i + *j << " ";
+        }
+    }
+    for(auto i = s1.rbegin();i!=s1.rend();i++){
+        for(auto j = s2.rbegin(); j!=s2.rend(); j++){
+            cout << *i + *j << " ";
+        }
+    }
+    
+    cout << endl;
+    return 0;
+}
