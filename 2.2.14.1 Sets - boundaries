@@ -1,0 +1,30 @@
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+void func(multiset <double > v, double start, double stop ){
+    double s = 0.0;
+if(v.upper_bound(stop) == v.end()||v.lower_bound(start)==v.end()) {
+    cout << "Not found ";
+}else {
+    for (auto i = v.lower_bound(start); i != v.upper_bound(stop); i++) {
+        s += *i;
+    }
+    cout << s << " ";
+}
+}
+
+int main() {
+
+    multiset <double> valuesA = { 1.1, 1.1, 2.3, 2.7, 2.9, 3.5 };
+    multiset <double> valuesB = { 2.5, 2.5, 2.7, 3.14, 3.5, 3.5, 4.5 };
+    double start_value, stop_value;
+    cin >> start_value;
+    cin >> stop_value;
+
+    func(valuesA,start_value,stop_value);
+    func(valuesB,start_value,stop_value);
+
+    return 0;
+}
