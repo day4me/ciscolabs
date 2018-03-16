@@ -20,7 +20,7 @@ int main()
 		if (x == value)
 			count++;
 	}
-	for (set<int>::reverse_iterator it1 = m1.rbegin(), it2 = m2.______(); it1 != m1.rend(); ++it1, _____)
+	for (set<int>::reverse_iterator it1 = m1.rbegin(), it2 = m2.rbegin(); it1 != m1.rend(); ++it1, ++it2)
 	{
 		cout << *it1 + *it2 + value << " ";
 	}
