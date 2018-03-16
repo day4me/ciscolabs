@@ -4,16 +4,16 @@
 
 using namespace std;
 
-void find_count(set<double,greater<double >>v,double val){
-    if(v.count(val)>0) {
+void find_count(set<double,greater<double >>v,double val) {
+    if (v.count(val) > 0) {
         cout << val << " ";
         v.erase(val);
-    }
-    else
-        cout << "Not found ";
-        for(auto i = v.begin();i!=v.end();i++){
-        cout << *i << " ";
+        for (auto i = v.begin(); i != v.end(); i++) {
+            cout << *i << " ";
         }
+    }
+        else
+            cout << "Not found ";
 }
 
 int main() {
