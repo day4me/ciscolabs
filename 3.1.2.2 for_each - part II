@@ -1,0 +1,31 @@
+//<problem chapter="2" section="2" slide="7" problem="1" title="Set - iterators">
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+void squares(int & value)
+{
+	cout << value * value << " ";
+}
+
+struct Squares
+{
+	void operator()(int & value) //change argument to const int & value for set
+	{
+		cout << value * value << " ";
+	}
+};
+
+int main()
+{
+	vector<int>v1 = { 3, 5, 6, 8, 9 };
+	for_each(v1.begin(), v1.end(), squares);
+	cout << endl;
+
+	for_each(v1.rbegin(), v1.rend(), Squares());
+	cout << endl;
+	system("pause");
+	return 0;
+}
