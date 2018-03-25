@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+void print_found(vector<int> values, int value)
+{
+	int n = 1;
+	vector<int>::iterator it;
+	while (true) {
+		it = search_n(values.begin(), values.end(), n, value);
+		if (it != values.end()) {
+			cout << value << " found " << n << " time(s) at: " << (it - values.begin()) << endl;
+			n++;
+		}
+		else break;
+	}
+	}
+
+int main()
+{
+	vector<int> values =
+	{ 11, 11, 21, 21, 30, 11, 11, 11, 17, 21, 21, 21, 11, 11, 11, 11 };
+	print_found(values, 11);
+	print_found(values, 21);
+	
+	system("pause");
+	return 0;
+}
