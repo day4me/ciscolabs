@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int diferense;
+
+struct Compare
+{
+
+	bool operator()(const int &f, const int &s)
+	{
+		diferense = abs(f - s);
+		return (diferense < 15);
+	}
+};
+
+
+int main()
+{
+	vector<int> original_values =
+	{ 210, 314, 202, 110, 211, 302, 358, 229, 260, 411, 412, 311, 373, 483 };
+	vector<int> noisy_values =
+	{ 211, 324, 203, 113, 227, 320, 340, 210, 239, 411, 412, 333, 371, 501 };
+
+	pair<vector<int>::iterator, vector<int>::iterator> p2;
+	pair<vector<int>::iterator, vector<int>::iterator> p;
+
+	p.first = original_values.begin();
+	p.second = noisy_values.begin();
+	
+	while (true) {
+		p2 = mismatch(p.first, original_values.end(), p.second, Compare());
+		
+		cout << "First difference greater than " << diferense - 1 << " is found: " << *(p2.first) << " - " << *(p2.second) << endl;
+		cout << endl;
+
+		p.first = p2.first;
+		std::advance(p.first, 1);
+		p.second = p2.second;
+		std::advance(p.second, 1);
+		if (p.first == original_values.end())
+			break;
+	}
+
+	system("pause");
+	return 0;
+}
