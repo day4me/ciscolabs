@@ -1,0 +1,56 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+#include <iterator>
+
+using namespace std;
+
+void srch(vector<int>v1, vector<int>v2, int v[]) {
+	vector<int>::iterator found;
+	vector<int>::iterator found1 = v2.begin();
+
+	while (true) {
+		string s = "";
+		int d = 0;
+
+		found = search(found1, v2.end(), v, v + 3);
+
+		if (found == v2.end())
+			break;
+
+		found1 = found;
+		std::advance(found1, 3);
+
+		while (d < 4) {
+			s = s + to_string(v1.at(distance(v2.begin(), found) + d)) + " ";
+			d++;
+		}
+		if (found != v2.end())
+		{
+			cout << "Pattern found, values at " << distance(v2.begin(), found) << " : " << s << endl;
+		}
+		else
+		{
+			cout << "Pattern not  be found\n";
+		}
+
+		cout << endl;
+	}
+}
+
+int main()
+{
+	vector<int> values = { 1, 1, 5, 3, 4, 4, 3, 2, 2, 4, 4, 5, 3, 8, 8, 1 };
+	vector<int> values1 = { 0, 1, -1, 1, 0, -1, -1, 0, 1, 0, 1, -1, 1, 0, -1 };
+	int patern1[] = { 0, 1, -1 };
+	int patern2[] = { -1, 1, 0 };
+	
+	srch(values, values1, patern1);
+	srch(values, values1, patern2);
+
+	system("pause");
+	return 0;
+}
+
+
