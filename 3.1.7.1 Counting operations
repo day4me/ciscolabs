@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+struct Find
+{
+	unsigned v1,v2;
+	Find(unsigned vv1,unsigned vv2){
+		v1 = vv1;
+		v2 = vv2;
+	}
+
+	bool operator()(const double & v)
+	{
+		return (v >= double(v1) && v <= double(v2));
+	}
+};
+
+
+
+int main()
+{
+	vector<double> values ={ 2.1, 3.14, 2.2, 1.1, 2.11, 3.2, 3.6, 2.5, 2.6, 4.11, 4.12, 3.11, 3.73, 4.83 };
+	unsigned start_value;
+	cin >> start_value;
+	unsigned stop_value;
+	cin >> stop_value;
+
+
+	unsigned int number;
+
+	number = count_if(values.begin(), values.end(),Find(start_value,stop_value));
+
+	cout << number << endl;
+
+	system("pause");
+	return 0;
+}
