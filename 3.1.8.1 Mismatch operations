@@ -31,7 +31,7 @@ int main()
 	p.first = original_values.begin();
 	p.second = noisy_values.begin();
 	
-	while (true) {
+	do{
 		p2 = mismatch(p.first, original_values.end(), p.second, Compare());
 		
 		cout << "First difference greater than " << diferense - 1 << " is found: " << *(p2.first) << " - " << *(p2.second) << endl;
@@ -41,9 +41,8 @@ int main()
 		std::advance(p.first, 1);
 		p.second = p2.second;
 		std::advance(p.second, 1);
-		if (p.first == original_values.end())
-			break;
-	}
+		
+	}while (p.first != original_values.end()) ;
 
 	system("pause");
 	return 0;
