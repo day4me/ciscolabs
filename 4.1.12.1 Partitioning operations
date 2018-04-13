@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+struct Generate
+{
+	int s;
+	int n;
+	int i;
+	Generate(int n1) : s(0), n(n1), i(1) {}
+	int operator()()
+	{
+		s += i;
+		i++;
+		return s;
+	}
+};
+
+void print(const int & value)
+{
+	cout << value << " ";
+}
+bool str(const int & a) {
+
+	int n = 0;
+	string s = to_string(a);
+	char const *pchar = s.c_str();
+	for (int i = 0; i < s.length(); i++) {
+		if (pchar[i] == '3')
+			n++;
+	}
+	if (n != 0)
+		return true;
+	else return false;
+}
+
+struct Three
+{
+	int n;
+	Three() :n(0) {}
+	bool operator()(const int & a)
+	{
+		return (a % 3 == 0) || (str(a));
+	}
+};
+
+int main()
+{
+	vector<int> results(40);
+
+	generate_n(results.begin(), 40, Generate());
+	vector<int>::iterator it = partition(results.begin(), results.end(), Three());
+
+	
+
+	for_each(results.begin(), it, print);
+	cout << endl;
+	for_each(it, results.end(),print);
+
+	system("pause");
+	return 0;
+}
