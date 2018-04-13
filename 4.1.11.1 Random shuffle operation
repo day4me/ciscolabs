@@ -31,34 +31,29 @@ int main()
 	int n = 0;
 
 	vector<vector<string>> players(4);
+	n = cards.size();
 
 	random_shuffle(cards.begin(), cards.end(),rng_function);
 
-	for (auto i = cards.begin(); i != cards.begin() + 13; i++) {
+	for (auto i = cards.begin(); i != cards.begin() + (n/4); i++) {
 		players.at(0).push_back(*i);
 	}
-	for (auto i = cards.begin()+13; i != cards.begin() + 26; i++) {
+	for (auto i = cards.begin()+(n/4); i != cards.begin() + (n/2); i++) {
 		players.at(1).push_back(*i);
 	}
-	for (auto i = cards.begin()+26; i != cards.begin() + 39; i++) {
+	for (auto i = cards.begin()+(n/2); i != cards.begin() +(n-n/4); i++) {
 		players.at(2).push_back(*i);
 	}
-	for (auto i = cards.begin()+39; i != cards.end(); i++) {
+	for (auto i = cards.begin()+(n-n/4); i != cards.end(); i++) {
 		players.at(3).push_back(*i);
 	}
-
-	for_each(players.at(0).begin(), players.at(0).end(), print);
-	cout << endl;
-	cout << endl;
-	for_each(players.at(1).begin(), players.at(1).end(), print);
-	cout << endl;
-	cout << endl;
-	for_each(players.at(2).begin(), players.at(2).end(), print);
-	cout << endl;
-	cout << endl;
-	for_each(players.at(3).begin(), players.at(3).end(), print);
-	cout << endl;
-	cout << endl;
+	
+	for (int i = 0; i < 4; i++) {
+		for_each(players.at(i).begin(), players.at(i).end(), print);
+		cout << endl;
+		cout << endl;
+	}
+	
 
 	system("pause");
 	return 0;
