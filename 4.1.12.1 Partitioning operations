@@ -8,13 +8,11 @@ using namespace std;
 struct Generate
 {
 	int s;
-	int n;
 	int i;
-	Generate(int n1) : s(0), n(n1), i(1) {}
+	Generate() : s(0), i(1) {}
 	int operator()()
 	{
 		s += i;
-		i++;
 		return s;
 	}
 };
@@ -54,11 +52,10 @@ int main()
 	generate_n(results.begin(), 40, Generate());
 	vector<int>::iterator it = partition(results.begin(), results.end(), Three());
 
-	
-
 	for_each(results.begin(), it, print);
 	cout << endl;
-	for_each(it, results.end(),print);
+	for_each(it, results.end(), print);
+	cout << endl;
 
 	system("pause");
 	return 0;
