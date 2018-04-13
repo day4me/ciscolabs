@@ -13,9 +13,8 @@ void print(const int & value)
 struct Generate
 {
 	int s;
-	int n;
 	int i;
-	Generate(int n1) : s(0), n(n1), i(1) {}
+	Generate() : s(0), i(1) {}
 	int operator()()
 	{
 		s += i;
@@ -31,8 +30,8 @@ int main()
 	cin >> count;
 	vector<int> results(count);
 
-	generate_n(resultsSmall.begin(), 6, Generate(6));
-	generate_n(results.begin(), count, Generate(count));
+	generate_n(resultsSmall.begin(), 6, Generate());
+	generate_n(results.begin(), count, Generate());
 
 	for_each(resultsSmall.begin(), resultsSmall.end(), print);
 	for_each(results.begin(), results.end(), print);
