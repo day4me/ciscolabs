@@ -27,12 +27,12 @@ struct Generate
 int main()
 {
 	vector<int> resultsSmall(6);
+	vector<int> results(count);
 	int count;
 	cin >> count;
-	vector<int> results(count);
-
+	
 	generate_n(resultsSmall.begin(), 6, Generate(6));
-	generate_n(results.begin(), count, Generate(count));
+	generate(results.begin(), results.end(), Generate(count));
 
 	for_each(resultsSmall.begin(), resultsSmall.end(), print);
 	for_each(results.begin(), results.end(), print);
