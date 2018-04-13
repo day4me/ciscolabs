@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+void print(const int & value)
+{
+	cout << value << " ";
+}
+
+struct Three
+{
+	int n;
+	Three():n(0){}
+	bool operator()(const int & a)
+	{
+		n = a-(a / 10)*10;
+		return (a % 3 == 0)||(n == 3);
+	}
+};
+
+struct Generate
+{
+	int s;
+	int n;
+	Generate(int n1) : s(1), n(n1) {}
+	int operator()()
+	{
+		do {
+			return s++;
+		} while (s != n);
+	}
+};
+
+int main()
+{
+	int count;
+	cin >> count;
+	vector<int> results(count);
+	generate(results.begin(), results.end(), Generate(count));
+	vector<int>::iterator newEnd = remove_if(results.begin(), results.end(), Three());
+
+	for_each(results.begin(), newEnd, print);
+
+	system("pause");
+	return 0;
+}
