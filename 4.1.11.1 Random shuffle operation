@@ -1,0 +1,65 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+using namespace std;
+int rng_function(int range)
+{
+	return std::rand() % range;
+}
+
+void print(const string & value)
+{
+	cout << value << " ";
+}
+
+int main()
+{
+	const unsigned RANDOM_SEED = 5;
+	std::srand(RANDOM_SEED);
+	vector<int> myvector;
+	vector<string> cards;
+	vector<string> card_names = { "A", "2", "3", "4" , "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+	for (auto name : card_names)
+	{
+		//you can encode Spade, Heart, Diamond, Club as Unicode characters U+2660–2667
+		cards.push_back(name + "S");
+		cards.push_back(name + "H");
+		cards.push_back(name + "D");
+		cards.push_back(name + "C");
+	}
+	int n = 0;
+
+	vector<vector<string>> players(4);
+
+	random_shuffle(cards.begin(), cards.end(),rng_function);
+
+	for (auto i = cards.begin(); i != cards.begin() + 13; i++) {
+		players.at(0).push_back(*i);
+	}
+	for (auto i = cards.begin()+13; i != cards.begin() + 26; i++) {
+		players.at(1).push_back(*i);
+	}
+	for (auto i = cards.begin()+26; i != cards.begin() + 39; i++) {
+		players.at(2).push_back(*i);
+	}
+	for (auto i = cards.begin()+39; i != cards.end(); i++) {
+		players.at(3).push_back(*i);
+	}
+
+	for_each(players.at(0).begin(), players.at(0).end(), print);
+	cout << endl;
+	cout << endl;
+	for_each(players.at(1).begin(), players.at(1).end(), print);
+	cout << endl;
+	cout << endl;
+	for_each(players.at(2).begin(), players.at(2).end(), print);
+	cout << endl;
+	cout << endl;
+	for_each(players.at(3).begin(), players.at(3).end(), print);
+	cout << endl;
+	cout << endl;
+
+	system("pause");
+	return 0;
+}
