@@ -10,14 +10,28 @@ void print(const int & value)
 	cout << value << " ";
 }
 
+bool str(const int & a) {
+
+	int n = 0;
+	string s = to_string(a);
+	char const *pchar = s.c_str();
+	for (int i = 0; i < s.length(); i++) {
+		if (pchar[i] == '3')
+			n++;
+	}
+	if (n != 0)
+		return true;
+	else return false;
+}
+
 struct Three
 {
 	int n;
-	Three():n(0){}
+	Three() :n(0) {}
 	bool operator()(const int & a)
 	{
-		n = a-(a / 10)*10;
-		return (a % 3 == 0)||(n == 3);
+		n = a - (a / 10) * 10;
+		return (a % 3 == 0) || (str(a));
 	}
 };
 
