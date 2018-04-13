@@ -5,13 +5,35 @@
 
 using namespace std;
 
-//your code
+struct Pet {
+	string name;
+	string pet_type;
+
+	bool operator==(Pet & a)
+	{
+		return name == a.name;
+	}
+};
+
 
 int main()
 {
 	vector<Pet> pets = { { "Amber", "Cat" },{ "Barky", "Dog" },{ "Barky", "Reptile" },
 	{ "Casper", "Fish" },{ "Casper", "Reptile" },{ "Godzilla", "Reptile" } };
 	vector<Pet> uniquePets(pets.size());
-	//your code
+
+	for (auto i = pets.begin(); i != pets.end(); i++) {
+		cout << i->name << " " << i->pet_type << endl;
+	}
+	cout << endl;
+
+	auto newEnd = unique(pets.begin(), pets.end());
+	copy(pets.begin(), newEnd, uniquePets.begin());
+
+	for (auto i = uniquePets.begin(); i != uniquePets.end();  i++) {
+		cout << i->name << " " << i->pet_type << endl;
+	}
+
+	system("pause");
 	return 0;
 }
