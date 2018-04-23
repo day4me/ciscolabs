@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+template <class T> void print(T start, T end) {
+    for (; start != end; ++start) {
+        std::cout << *start << " ";
+    }
+}
+
+struct Generate
+{
+    int s;
+    int i;
+    Generate() : s(0), i(1) {}
+    int operator()()
+    {
+        s += i;
+        return s;
+    }
+};
+
+int main()
+{
+    vector<int> results(20);
+
+    generate_n(results.begin(), 20, Generate());
+    vector<int>::iterator it1;
+    vector<int>::iterator it2;
+    it1=lower_bound(results.begin(),results.end(),5);
+    it2=upper_bound(results.begin(),results.end(),11);
+
+    print(results.begin(),results.end());
+    cout << endl;
+    print(it1,it2);
+
+    return 0;
+}
