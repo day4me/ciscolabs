@@ -1,0 +1,60 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+#include <ctype.h>
+#include <string>
+
+using namespace std;
+
+struct Country
+{
+    string name;
+    int area;
+Country(string n,int a):name(n),area(a){}
+
+};
+void print(const Country & v)
+{
+    cout<<v.area<<" ";
+}
+
+
+void printMessage(bool value)
+{
+    if (value)
+    {
+        cout<<"Found!\n";
+    }
+    else
+    {
+        cout<<"Not found!\n";
+    }
+}
+bool ascending_one_key(const Country& a,const Country& b)
+{
+    return a.area < b.area;
+}
+
+int main()
+{
+    vector <Country> countries = {
+            {"India", 3287 },{ "Argentina", 2780 },
+            {"Brazil", 8515}, {"Australia", 7692},
+            {"China", 9572 },{ "United States of America", 9525 },
+            {"Russia", 17098 },{ "Canada", 9984 },
+            {"Kazakhstan", 	2724 }, {"Algeria", 2381 }
+    };
+
+    int area ;
+
+    cin >> area;
+
+    Country b("",area);
+
+    sort(countries.begin(), countries.end(),ascending_one_key);
+
+    printMessage(binary_search(countries.begin(), countries.end(), b,ascending_one_key));
+
+    return 0;
+}
