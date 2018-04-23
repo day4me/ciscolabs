@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+
+using namespace std;
+
+struct Point {
+    int x;
+    int y;
+
+    bool operator ()(Point & a,Point & b) {
+        if (a.x < b.x && a.y < b.y)
+            return true;
+
+        else return false;
+    }
+};
+int main()
+{
+    vector <Point> points = { {1, 2}, {3, 5}, {2, 2} };
+
+    sort(points.begin(),points.end(),Point());
+
+    for (auto i = points.begin(); i !=points.end() ; ++i) {
+        cout << i->x << " " << i->y << endl;
+
+    }
+
+
+    return 0;
+}
