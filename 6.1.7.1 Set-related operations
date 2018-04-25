@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <functional>
+
+using namespace std;
+
+struct Country
+{
+    string name;
+    int area;
+    friend std::ostream& operator<< (std::ostream &out, const Country &c);
+};
+std::ostream& operator<< (std::ostream &out, const Country &c)
+{
+    out << c.name << " " << c.area;
+
+    return out;
+}
+
+bool compare(Country lhs, Country rhs)
+{
+    return lhs.area < rhs.area;
+}
+
+int main()
+{
+    vector <Country> countries = {
+            { "India", 3287 },{ "Argentina", 2780 },
+            { "Brazil", 8515 },{ "Australia", 7692 },
+            { "China", 9572 },{ "United States of America", 9525 },
+            { "Russia", 17098 },{ "Canada", 9984 },
+            { "Kazakhstan", 	2724 },{ "Algeria", 2381 }
+    };
+    vector <Country> countries_small = {
+            { "Brazil", 8515 },{ "Australia", 7692 },
+            { "Kazakhstan", 	2724 },{ "Algeria", 2381 }x
+    };
+
+    sort(countries.begin(), countries.end(),compare);
+    sort(countries_small.begin(), countries_small.end(),compare);
+
+    cout << *(min_element(countries.begin(),countries.end(),compare)) << endl;
+    cout << *(min_element(countries_small.begin(),countries_small.end(),compare)) << endl;
+    cout << *(max_element(countries.begin(),countries.end(),compare)) << endl;
+    cout << *(max_element(countries_small.begin(),countries_small.end(),compare)) << endl;
+
+    return 0;
+}
