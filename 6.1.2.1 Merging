@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+
+using namespace std;
+
+struct Point{
+    int x;
+    int y;
+
+    bool operator ()(Point & a,Point & b) {
+        if (a.x < b.x && a.y < b.y)
+            return true;
+
+        else return false;
+    }
+
+};
+
+int main()
+{
+
+
+    vector <Point> pointsA = { { 1, 2 },{ 3, 5 },{ 2, 2 } };
+    vector <Point> pointsB = { { 3, 2 },{ 2, 1 },{ 4, 1 } };
+    vector <Point> pointsClosest(4);
+
+    sort(pointsA.begin(),pointsA.end(),Point());
+    sort(pointsB.begin(),pointsB.end(),Point());
+
+    merge(pointsA.begin(), pointsA.begin()+2, pointsB.begin(), pointsB.begin()+2, pointsClosest.begin(),Point());
+
+    for(auto i = pointsClosest.begin();i!=pointsClosest.end();++i){
+        cout << i->x << " " << i->y << endl;
+    }
+
+    return 0;
+}
