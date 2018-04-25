@@ -35,7 +35,7 @@ int main()
     };
     vector <Country> countries_small = {
             { "Brazil", 8515 },{ "Australia", 7692 },
-            { "Kazakhstan", 	2724 },{ "Algeria", 2381 }x
+            { "Kazakhstan", 	2724 },{ "Algeria", 2381 }
     };
 
     sort(countries.begin(), countries.end(),compare);
