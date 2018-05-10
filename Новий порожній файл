@@ -1,0 +1,90 @@
+#include <iostream>
+#include <cmath>
+#include <bitset>
+#include <ctime>
+#include <random>
+#include <string>
+
+
+using namespace std;
+
+long factorial(int n)
+{
+    int counter;
+    long fact = 1;
+
+    for (int counter = 1; counter <= n; counter++)
+    {
+        fact = fact * counter;
+    }
+    return fact;
+}
+float comb(float n , float m){
+    float res;
+    res=factorial(n)/(factorial(m)*factorial(n-m));
+    return res;
+}
+
+
+int main() {
+    srand(time(NULL));
+
+    int ti = 2;
+    const int Np = 16;
+
+    int k = log2(Np);
+
+    int dmin = 2 * ti + 1;
+
+    float sumNpC = 0;
+
+    int r = 0;
+
+    for (int i = 0; i < dmin; i++) {
+        for(int j = 1;j<dmin; j++){
+            sumNpC+=comb(k+r,j);
+        }
+        if (r >= log2(1+sumNpC)) {
+            break;
+        }
+        else r++;
+    }
+
+    int n = k + r;
+
+    cout << n;
+    const int n1 = n;
+
+    int **Grk = new int*[r];
+
+    for (int i = 0; i < r; i++) {
+        Grk[i] = new int[k];
+    }
+
+   int mas [Np];
+
+    bitset<n1> komb;
+    komb.set();
+    int numb = (int)(komb.to_ulong());
+
+    a:
+    for (int i = 0; i<Np; i++) {
+        int rnd = rand() % numb + 1;
+        mas[i] = rnd;
+    }												//äâà öèêëè ùîá çàïîâíèòè ìàñèâ ðàíä çíà÷åííÿìè áåç ïîâòîðåíü
+
+    for (int i = 0; i<Np - 1; i++)
+    {
+        for (int j = i + 1; j<Np; j++)
+            if (mas[j] == mas[i])
+                goto a;
+    }
+
+
+
+
+
+
+
+    return 0;
+}
