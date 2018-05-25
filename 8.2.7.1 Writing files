@@ -52,7 +52,7 @@ int main() {
 	}
 	//cout << buffer << endl;
 	myfile.close();
-	filename = ("C:/Users/volod/source/repos/Cisco/Debug/textcopy.txt"); myfile.open(filename);
+	filename = ("C:/Users/nicky/source/repos/lab9/Debug/textcopy.txt"); myfile.open(filename);
 	for (int i = 0; i < 3; i++)
 	{
 		getline(myfile, line);
