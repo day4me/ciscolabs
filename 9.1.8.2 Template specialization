@@ -1,0 +1,58 @@
+#include "stdafx.h"
+#include <iostream>
+#include <stdio.h>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <typeinfo>
+
+using namespace std;
+struct Point
+{
+	int x, y;
+};
+
+struct Line
+{
+	Point start, end;
+};
+
+
+
+
+Point add(Point a, Point b)
+{
+	Point res;
+	res.x = a.x + b.x;
+	res.y = a.y + b.y;
+	return res;
+}
+Line add(Line line, Point point)
+{
+	Line newline;
+	newline.start = add(point, line.start);
+	newline.end = add(point, line.end);
+	return newline;
+}
+template<class T>T add(T a, T b)
+{
+	return a + b;
+};
+//your code
+
+int main()
+{
+	cout << add(5, 10) << endl;
+	cout << add(5.0, 10.0) << endl;
+	Point p1 = { 1, 1 };
+	Point p2 = { 2, 2 };
+	Point p3 = add(p1, p2);
+	cout << "P3: " << p3.x << ":" << p3.y << endl;
+	Line x_line = { p1, p2 };
+	Line moved_line = add(x_line, p1);
+	cout << "Line start: " << moved_line.start.x << ":" << moved_line.start.y << endl;
+	cout << "Line end: " << moved_line.end.x << ":" << moved_line.end.y << endl;
+
+	system("pause");
+	return 0;
+}
