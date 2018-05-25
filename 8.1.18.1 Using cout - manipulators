@@ -1,0 +1,31 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <vector>
+
+using namespace std;
+double multiply_value(double value)
+{
+	return value * 11.123;
+}
+
+int main()
+{
+	double value;
+	cin >> value;
+	double mas[5];
+	for (int i = 0; i < 5; i++)
+	{
+		mas[i] = value * pow(11.123,double(i));
+	}
+	cout << setfill('*');
+	for (int i = 0; i < 5; i++)
+	{
+		cout << '|' <<setw(10) << mas[i] << '|' <<setw(10)<< mas[4 - i] << '|' << endl;
+	}
+	//your code
+
+	system("pause");
+	return 0;
+}
