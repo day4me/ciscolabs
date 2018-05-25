@@ -1,0 +1,48 @@
+#include "stdafx.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+template <class T>
+std::string getStatus(const T & stream, string filename) {
+	ostringstream s;
+	if (stream.is_open())
+	{
+		s << "File: " << filename << " was successfully opened!\n";
+	}
+	else
+	{
+		s << "Failed to open file: " << filename << endl;
+	}
+	return s.str();
+}
+std::string getFlags(const ios & stream) {
+	stringstream s;
+	s << boolalpha << "G:" << stream.good() << " E:" << stream.eof() << " F:" << stream.fail()
+		<< " B:" << stream.bad();
+	return s.str();
+}
+int main() {
+
+	string line;
+	ifstream myfile;
+	string filename = ("C:/Users/nicky/source/repos/lab8/Debug/text.txt");
+	myfile.open(filename);
+	cout << "Status: " << getStatus(myfile, filename) << "Flags: " << getFlags(myfile) << endl;
+	if (!myfile.is_open()) {
+		perror("Error open");
+		//exit(EXIT_FAILURE);
+	}
+	int counter = 0;
+	while (getline(myfile, line)) {
+		if (counter % 2)cout << line << endl;
+		++counter;
+	}
+
+	system("pause");
+	return 0;
+}
