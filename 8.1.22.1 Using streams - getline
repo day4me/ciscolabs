@@ -1,0 +1,27 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	string introduction = "My name is ";
+	string input;
+	bool exists;
+	getline(cin,input);
+	//cout << input << endl;
+	exists = (input.find(introduction) != std::string::npos);
+	//cout << input.find(introduction) << "intro size = "<< introduction.size() << endl;
+	if (exists)
+	{
+		cout << "Hi, " << input.substr(introduction.size()) << endl;
+	}
+	else
+		cout << "Hi, please introduce yourself"<< endl;
+	//your code
+
+	system("pause");
+	return 0;
+}
