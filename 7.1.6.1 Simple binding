@@ -1,0 +1,48 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <functional>
+
+using namespace std;
+
+struct Country
+{
+	string name;
+	int area;
+	Country operator*(int value)
+	{
+		this->area *= value;
+		return *this;
+	}
+};
+Country multiply(Country c, int x)
+{
+	return c * x;
+}
+void print(Country country)
+{
+	cout << country.name<< "  " << country.area << endl;
+}
+//your code
+
+int main()
+{
+	vector <Country> countries = {
+		{ "India", 3287 },{ "Argentina", 2780 },
+	{ "Brazil", 8515 },{ "Australia", 7692 },
+	{ "China", 9572 },{ "United States of America", 9525 },
+	{ "Russia", 17098 },{ "Canada", 9984 },
+	{ "Kazakhstan", 	2724 },{ "Algeria", 2381 }
+	};
+	vector <Country> c(countries.size());
+	//for_each(countries.begin(), countries.end(), print);
+
+	transform(countries.begin(), countries.end(), c.begin(), bind2nd(ptr_fun(multiply), 1000));
+	//for_each(countries.begin(), countries.end(), print);
+	for_each(c.begin(), c.end(), print);
+
+	system("pause");
+	return 0;
+}
