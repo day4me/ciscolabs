@@ -1,0 +1,29 @@
+#include "stdafx.h"
+#include <vector>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	string s = "The quick brown fox jumps over the lazy dog";
+	int start_value = 0, stop_value = 0;
+	cin >> start_value;
+	cin >> stop_value;
+	//your code
+	if (start_value < stop_value && stop_value< s.size() && start_value>=0)
+	{
+		for (int i = start_value; i < stop_value; i++)
+		{
+			if (s[i] != ' ') 
+			{
+				cout << s[i] << " ";
+			}
+		}
+	}
+	std::cout << endl;
+
+	system("pause");
+	return 0;
+}
