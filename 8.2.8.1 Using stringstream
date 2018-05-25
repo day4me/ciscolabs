@@ -1,0 +1,20 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+int main() {
+	string input;
+	getline(cin, input);
+	std::istringstream ss(input);
+	//your code
+	string token;
+	while (getline(ss, token, ':'))
+	{
+		cout << token << endl;
+	}
+	system("pause");
+	return 0;
+}
