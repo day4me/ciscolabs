@@ -1,0 +1,62 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <typeinfo>
+
+using namespace std;
+class Point
+{
+public:
+	int getX(){return x;}
+	int getY() { return y; }
+	Point(int X, int Y) : x{ X }, y{Y} {}
+private:
+	int x;
+	int y;
+	
+};
+template<class T>
+int signum(T data)
+{
+
+
+		if (data == 0)
+		{
+			return 0;
+		}
+		else if (data > 0)
+		{
+			return 1;
+		}
+		else return -1;
+	}
+int signum(Point data)
+{
+	if ((signum(data.getX()) == -1) && (signum(data.getY()) == -1))
+	{
+		return -1;
+	}
+	else if ((signum(data.getX()) == 1) && (signum(data.getY()) == 1))
+	{
+		return 1;
+	}
+	else return 0;
+}
+template<class T>
+string tostr(T data)
+{
+	return to_string(data);
+}
+int main() {
+	int valuei = -5;
+	vector <Point> points = { { -1, 2 },{ -3, -5 },{ 2, 2 } };
+
+	cout << "Value: " << valuei << " sgn: " << signum(valuei) << endl;
+	for (auto point : points)
+		cout << "Point: " << point.getX() << ", " << point.getY() << " sgn:" << signum(point) << endl;
+
+	system("pause");
+	return 0;
+}
