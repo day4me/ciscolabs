@@ -1,0 +1,45 @@
+#include "stdafx.h"
+#include <iostream>
+#include <algorithm>
+#include <iterator>
+#include <functional>
+#include <vector>
+#include <numeric>
+
+using namespace std;
+
+void print(const double & value)
+{
+	cout << value << " ";
+}
+//your code
+
+int main()
+{
+	vector<double> student1Grades = { 3, 4, 5, 4, 4.5, 5, 3.5, 4 };
+	vector<double> student2Grades = { 5, 4.5, 5, 4.5, 3, 3, 3.5, 5 };
+	vector<double> gradeWeights = { 0.05, 0.15, 0.1, 0.2, 0.05, 0.3, 0.1, 0.05 };
+	vector<double> weighted1(8);
+	vector<double> weighted2(8);
+
+	transform(student1Grades.begin(), student1Grades.end(), gradeWeights.begin(),weighted1.begin(), multiplies<double>());
+	
+	for_each(weighted1.begin(), weighted1.end(), print);
+	cout << endl;
+	cout << "Sum =  " << accumulate(weighted1.begin(),weighted1.end(),0.0) << endl;
+	cout << "Average = " << (accumulate(weighted1.begin(), weighted1.end(), 0.0))/8.0 << endl;
+
+
+	transform(student2Grades.begin(), student2Grades.end(), gradeWeights.begin(), weighted2.begin(), multiplies<double>());
+	
+	for_each(weighted2.begin(), weighted2.end(), print);
+	cout << endl;
+	cout << "Sum =  " << accumulate(weighted2.begin(), weighted2.end(), 0.0) << endl;
+	cout << "Average = " << (accumulate(weighted2.begin(), weighted2.end(), 0.0))/8.0;
+
+	cout << endl;
+
+
+	system("pause");
+	return 0;
+}
