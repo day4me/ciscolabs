@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-	string s = "The quick brown fox jumps over the lazy dog";
+	string s = "He held out his hand for the dog to sniff, but Nikolai nuzzled his nose into it instead";
 	int start_value = 0, stop_value = 0;
 	cin >> start_value;
 	cin >> stop_value;
