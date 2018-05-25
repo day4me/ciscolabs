@@ -1,0 +1,26 @@
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	double value;
+	cin >> value;
+
+	//your code
+
+	cout << value << endl;
+	cout.setf(ios::showpos | ios::showpoint);
+	cout << value << endl;
+	cout.unsetf(ios::showpos);
+	cout << value << endl;
+	cout.unsetf(ios::showpoint);
+	cout.setf(ios::showpos);
+	cout << value << endl;
+
+	system("pause");
+	return 0;
+}
