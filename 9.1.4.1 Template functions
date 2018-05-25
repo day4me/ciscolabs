@@ -1,0 +1,37 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+template<class T>
+int sigma(T data)
+{
+	if (data == 0)
+	{
+		return 0;
+	}
+	else if (data > 0)
+	{
+		return 1;
+	}
+	else return -1;
+}
+template<class T>
+string tostr(T data)
+{
+	return to_string(data);
+}
+int main() {
+	int valuei;
+	double valued;
+	cin >> valuei;
+	cin >> valued;
+	cout << sigma(valuei) << endl;
+	cout << sigma(valued) << endl;
+	cout << tostr(valuei) << endl;
+	cout << tostr(valued) << endl;
+	system("pause");
+	return 0;
+}
