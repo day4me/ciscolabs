@@ -1,0 +1,30 @@
+[day4me@arch-d4m ~]$ xprop 
+_NET_WM_ICON(CARDINAL) = 
+WM_CLASS(STRING) = "spotify", "Spotify"
+WM_NAME(STRING) = "Spotify Premium"
+_NET_WM_NAME(UTF8_STRING) = "Spotify Premium"
+XdndProxy(WINDOW): window id # 0x800002
+_NET_WM_DESKTOP(CARDINAL) = 0
+WM_STATE(WM_STATE):
+		window state: Normal
+		icon window: 0x0
+WM_NORMAL_HINTS(WM_SIZE_HINTS):
+		program specified location: 0, 0
+		window gravity: Static
+_NET_WM_PID(CARDINAL) = 334
+WM_LOCALE_NAME(STRING) = "uk_UA.UTF-8"
+WM_CLIENT_MACHINE(STRING) = "arch-d4m"
+WM_PROTOCOLS(ATOM): protocols  WM_DELETE_WINDOW, _NET_WM_PING
+[day4me@arch-d4m ~]$ xprop 
+_NET_WM_USER_TIME(CARDINAL) = 0
+WM_NORMAL_HINTS(WM_SIZE_HINTS):
+		program specified location: 349, 309
+XdndAware(ATOM) = BITMAP
+_MOTIF_WM_HINTS(_MOTIF_WM_HINTS) = 0x2, 0x0, 0x0, 0x0, 0x0
+_NET_WM_BYPASS_COMPOSITOR(CARDINAL) = 2
+_NET_WM_WINDOW_TYPE(ATOM) = _NET_WM_WINDOW_TYPE_MENU
+_NET_WM_PID(CARDINAL) = 334
+WM_LOCALE_NAME(STRING) = "uk_UA.UTF-8"
+WM_CLIENT_MACHINE(STRING) = "arch-d4m"
+WM_PROTOCOLS(ATOM): protocols  WM_DELETE_WINDOW, _NET_WM_PING
+
